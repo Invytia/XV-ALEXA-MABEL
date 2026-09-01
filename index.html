@@ -593,7 +593,7 @@
             <a href="https://drive.google.com/drive/folders/1uyOUYgsOM-q3Cs168PR57BDa3M2KPT7N?usp=sharing" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Subir mis Fotos</a>
         </section>
 
-        <!-- RSVP y Pases (Invytia Platinum Pass) y Foto 4 -->
+        <!-- RSVP y Pases (Platinum Pass) y Foto 4 -->
         <section class="section-block bg-pink">
             <img src="assets/menta.png" class="floral-img anim-element anim-zoom delay-1" style="top: -20px; right: -20px; transform: rotate(-10deg);" alt="">
             <img src="assets/rosa1.png" class="floral-img anim-element anim-zoom delay-4" style="bottom: 10%; left: -30px; transform: rotate(25deg);" alt="">
@@ -732,15 +732,69 @@
             document.querySelectorAll('.anim-element').forEach(el => observer.observe(el));
         });
 
-        // --- SISTEMA DE PASES PLATINUM (INVYTIA) ---
+        // --- SISTEMA DE PASES PLATINUM ---
         let pasesAsignados = 0;
         let nombreInvitado = "Invitado Especial";
         const urlParams = new URLSearchParams(window.location.search);
         
-        // Base de datos de invitados simulada para que el sistema opere (Rellenar por el cliente)
+        // Base de datos de invitados actualizada
         const dbInvitados = {
-            "1": { nombre: "Familia Ejemplo 1", pases: 4 },
-            "2": { nombre: "Familia Ejemplo 2", pases: 2 }
+            "1": { nombre: "MOEDANO AGUILAR", pases: 2 },
+            "2": { nombre: "MOEDANO SANTIAGO", pases: 4 },
+            "3": { nombre: "MOEDANO SALDIERNA", pases: 2 },
+            "4": { nombre: "MOEDANO RODRIGUEZ", pases: 2 },
+            "5": { nombre: "CABRERA MOEDANO", pases: 2 },
+            "6": { nombre: "MOEDANO RIVERA", pases: 2 },
+            "7": { nombre: "MOEDANO AGUILAR", pases: 4 },
+            "8": { nombre: "MAYEN MOEDANO", pases: 5 },
+            "9": { nombre: "MOEDANO GRIMALDO", pases: 4 },
+            "10": { nombre: "POLANCO MOEDANO", pases: 4 },
+            "11": { nombre: "MOEDANO GUERRERO", pases: 3 },
+            "12": { nombre: "FIGUEROA MOEDANO", pases: 4 },
+            "13": { nombre: "JENNIFER CABRERA", pases: 1 },
+            "14": { nombre: "CABRERA ALMAZAN", pases: 4 },
+            "15": { nombre: "MOEDANO RODRIGUEZ", pases: 3 },
+            "16": { nombre: "MOEDANO BRAVO", pases: 2 },
+            "17": { nombre: "GOMEZ DEL ANGEL", pases: 4 },
+            "18": { nombre: "LUGO GOMEZ", pases: 2 },
+            "19": { nombre: "GOMEZ GOMEZ", pases: 4 },
+            "20": { nombre: "CASTELLANOS GOMEZ", pases: 3 },
+            "21": { nombre: "GRANDE MENDOZA", pases: 4 },
+            "22": { nombre: "ACEVEDO FUENTES", pases: 5 },
+            "23": { nombre: "CABALLERO VARGAS", pases: 6 },
+            "24": { nombre: "PADILLA GOMEZ", pases: 3 },
+            "25": { nombre: "ALMENDRA VAZQUEZ", pases: 1 },
+            "26": { nombre: "CARMEN GONZALEZ", pases: 2 },
+            "27": { nombre: "ISABELLA CARBAJAL", pases: 2 },
+            "28": { nombre: "MANUEL HERNANDEZ", pases: 2 },
+            "29": { nombre: "JESUS GUTIERREZ", pases: 2 },
+            "30": { nombre: "HECTOR LUGO", pases: 2 },
+            "31": { nombre: "JOEL GARCIA", pases: 2 },
+            "32": { nombre: "MORALES DIAZ", pases: 4 },
+            "33": { nombre: "DEL ANGEL DELGADO", pases: 2 },
+            "34": { nombre: "DEL ANGEL DELGADO", pases: 2 },
+            "35": { nombre: "NUÑEZ ESPERILLA", pases: 5 },
+            "36": { nombre: "ROMAN AVILEZ", pases: 4 },
+            "37": { nombre: "CRISANTOS DOMINGUEZ", pases: 4 },
+            "38": { nombre: "PEREZ TAΡΙΑ", pases: 3 },
+            "39": { nombre: "kaly", pases: 1 },
+            "40": { nombre: "luis armando", pases: 1 },
+            "41": { nombre: "isabella castillo", pases: 1 },
+            "42": { nombre: "sofy colmenero", pases: 1 },
+            "43": { nombre: "andy canibe", pases: 2 },
+            "44": { nombre: "vale romero", pases: 1 },
+            "45": { nombre: "priscila", pases: 1 },
+            "46": { nombre: "zianya", pases: 1 },
+            "47": { nombre: "adriana", pases: 1 },
+            "48": { nombre: "barbara", pases: 1 },
+            "49": { nombre: "sofhia fabio", pases: 1 },
+            "50": { nombre: "natalia", pases: 1 },
+            "51": { nombre: "jimena", pases: 1 },
+            "52": { nombre: "ale", pases: 1 },
+            "53": { nombre: "zoe", pases: 1 },
+            "54": { nombre: "mia", pases: 1 },
+            "55": { nombre: "jasso", pases: 1 },
+            "56": { nombre: "nikol", pases: 1 }
         };
 
         let parametroId = urlParams.get('id');
@@ -763,7 +817,7 @@
             pasesAsignados = 10; 
         }
 
-        // Mostrar boleto VIP de Invytia si hay ID
+        // Mostrar boleto VIP si hay ID
         if (pasesAsignados > 0 && parametroId) {
             const pasesSection = document.getElementById('pases-section');
             if (pasesSection) {
