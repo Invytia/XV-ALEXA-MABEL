@@ -833,6 +833,7 @@
         // --- SISTEMA DE PASES PLATINUM ---
         let pasesAsignados = 0;
         let nombreInvitado = "Invitado Especial";
+        let mostrarBoleto = false; // Variable auxiliar para saber si pintaremos el pase
         const urlParams = new URLSearchParams(window.location.search);
         
         // Base de datos de invitados actualizada
@@ -902,21 +903,32 @@
         const currentPhoneNumber = "525638000110";
 
         if (parametroId && dbInvitados[parametroId]) {
+            // Sistema 1: Si hay ID y existe en la base de datos
             pasesAsignados = dbInvitados[parametroId].pases;
             nombreInvitado = dbInvitados[parametroId].nombre;
             
             const inputName = document.getElementById("rsvp-name");
             inputName.value = nombreInvitado;
-            inputName.disabled = true;
+            inputName.disabled = true; // Bloquea el campo de nombre
+
+            mostrarBoleto = true;
+
         } else if (parametroPases && !isNaN(parametroPases)) {
+            // Sistema 2: Si NO hay ID válido, pero sí hay parámetro P (?p=3)
             pasesAsignados = parseInt(parametroPases);
+            // El campo rsvp-name se queda habilitado y vacío para que pongan su nombre
+            // nombreInvitado se queda como "Invitado Especial"
+
+            mostrarBoleto = true;
+
         } else {
-            // Valor por defecto si no se usa ID en el enlace
+            // Valor por defecto si no se usa ninguno de los enlaces
             pasesAsignados = 10; 
+            mostrarBoleto = false; // No mostramos boleto si entran al link base sin parámetros
         }
 
-        // Mostrar boleto VIP si hay ID
-        if (pasesAsignados > 0 && parametroId) {
+        // Mostrar boleto VIP de cualquiera de los dos sistemas
+        if (mostrarBoleto && pasesAsignados > 0) {
             const pasesSection = document.getElementById('pases-section');
             if (pasesSection) {
                 pasesSection.style.display = 'block';
@@ -950,7 +962,7 @@
             const guests = document.getElementById("rsvp-guests").value;
             
             if (name === "" || status === "") {
-                alert("Por favor, selecciona una opción de asistencia.");
+                alert("Por favor, ingresa tu nombre y selecciona una opción de asistencia.");
                 return;
             }
 
